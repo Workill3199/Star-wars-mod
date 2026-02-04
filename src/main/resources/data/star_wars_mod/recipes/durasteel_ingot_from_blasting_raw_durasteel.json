@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "durasteel_ingot",
+  "ingredient": {
+    "item": "star_wars_mod:raw_durasteel"
+  },
+  "result": {
+    "id": "star_wars_mod:durasteel_ingot"
+  }
+}

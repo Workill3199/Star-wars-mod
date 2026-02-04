@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "key": {
+    "D": {
+      "item": "star_wars_mod:durasteel_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "  D",
+    " RD",
+    "D  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "star_wars_mod:blaster"
+  }
+}

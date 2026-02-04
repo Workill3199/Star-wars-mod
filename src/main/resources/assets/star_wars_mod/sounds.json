@@ -1,0 +1,26 @@
+{
+  "lightsaber_on": {
+    "sounds": [
+      "star_wars_mod:lightsaber_on"
+    ],
+    "subtitle": "subtitles.star_wars_mod.lightsaber_on"
+  },
+  "lightsaber_off": {
+    "sounds": [
+      "star_wars_mod:lightsaber_off"
+    ],
+    "subtitle": "subtitles.star_wars_mod.lightsaber_off"
+  },
+  "lightsaber_idle": {
+    "sounds": [
+      "star_wars_mod:lightsaber_idle"
+    ],
+    "subtitle": "subtitles.star_wars_mod.lightsaber_idle"
+  },
+  "lightsaber_swing": {
+    "sounds": [
+      "star_wars_mod:lightsaber_swing"
+    ],
+    "subtitle": "subtitles.star_wars_mod.lightsaber_swing"
+  }
+}

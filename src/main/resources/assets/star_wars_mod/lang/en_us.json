@@ -1,0 +1,17 @@
+{
+  "item.star_wars_mod.lightsaber": "Lightsaber",
+  "item.star_wars_mod.blaster": "Blaster",
+  "item.star_wars_mod.raw_durasteel": "Raw Durasteel",
+  "item.star_wars_mod.durasteel_ingot": "Durasteel Ingot",
+  "item.star_wars_mod.kyber_crystal": "Blue Kyber Crystal",
+  "item.star_wars_mod.red_kyber_crystal": "Red Kyber Crystal",
+  "item.star_wars_mod.green_kyber_crystal": "Green Kyber Crystal",
+  "item.star_wars_mod.purple_kyber_crystal": "Purple Kyber Crystal",
+  "block.star_wars_mod.durasteel_ore": "Durasteel Ore",
+  "block.star_wars_mod.kyber_crystal_ore": "Kyber Crystal Ore",
+  "item.star_wars_mod.r2d2_spawn_egg": "R2-D2 Spawn Egg",
+  "item.star_wars_mod.battle_droid_spawn_egg": "Battle Droid Spawn Egg",
+  "entity.star_wars_mod.r2d2": "R2-D2",
+  "entity.star_wars_mod.battle_droid": "Battle Droid",
+  "entity.star_wars_mod.laser_projectile": "Laser Bolt"
+}

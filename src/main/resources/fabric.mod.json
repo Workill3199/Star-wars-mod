@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "star_wars_mod",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Star Wars Mod",
+	"description": "A Star Wars mod for Minecraft!",
 	"authors": [
 		"Me!"
 	],
@@ -11,29 +11,29 @@
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"license": "MIT",
+	"icon": "assets/star_wars_mod/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"com.starwars.StarWarsMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"com.starwars.StarWarsModClient"
+		],
+		"fabric-datagen": [
+			"com.starwars.StarWarsModDataGenerator"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
-		{
-			"config": "modid.client.mixins.json",
-			"environment": "client"
-		}
+		"star_wars_mod.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.15.10",
-		"minecraft": "~1.20.6",
+		"fabricloader": ">=0.16.5",
+		"minecraft": "~1.21.1",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"geckolib": "*"
 	},
 	"suggests": {
 		"another-mod": "*"

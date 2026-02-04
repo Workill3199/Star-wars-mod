@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "key": {
+    "C": {
+      "item": "star_wars_mod:kyber_crystal"
+    },
+    "D": {
+      "item": "star_wars_mod:durasteel_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " C ",
+    " D ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "star_wars_mod:lightsaber"
+  }
+}
