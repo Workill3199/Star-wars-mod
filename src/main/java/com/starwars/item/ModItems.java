@@ -38,6 +38,11 @@ public class ModItems {
     public static final Item LIGHTSABER_EMITTER = registerItem("lightsaber_emitter", new Item(new Item.Settings()));
     public static final Item GALACTIC_GUIDE_BOOK = registerItem("galactic_guide_book", new Item(new Item.Settings().maxCount(1)));
 
+    // Droid Parts & Materials
+    public static final Item PLASTEEL_INGOT = registerItem("plasteel_ingot", new Item(new Item.Settings()));
+    public static final Item PLASTEEL_PLATE = registerItem("plasteel_plate", new Item(new Item.Settings()));
+    public static final Item CABLE = registerItem("cable", new Item(new Item.Settings()));
+
     // Materials
     public static final Item RAW_DURASTEEL = registerItem("raw_durasteel", new Item(new Item.Settings()));
     public static final Item DURASTEEL_INGOT = registerItem("durasteel_ingot", new Item(new Item.Settings()));
@@ -48,9 +53,15 @@ public class ModItems {
 
     // Block Items
     public static final Item DURASTEEL_ORE = registerItem("durasteel_ore", new BlockItem(ModBlocks.DURASTEEL_ORE, new Item.Settings()));
+    public static final Item PLASTEEL_ORE = registerItem("plasteel_ore", new BlockItem(ModBlocks.PLASTEEL_ORE, new Item.Settings()));
     public static final Item KYBER_CRYSTAL_ORE = registerItem("kyber_crystal_ore", new BlockItem(ModBlocks.KYBER_CRYSTAL_ORE, new Item.Settings()));
     public static final Item HYPERFORGE = registerItem("hyperforge", new BlockItem(ModBlocks.HYPERFORGE, new Item.Settings()));
     public static final Item LIGHTSABER_FORGE = registerItem("lightsaber_forge", new BlockItem(ModBlocks.LIGHTSABER_FORGE, new Item.Settings()));
+    public static final Item CIRCUIT_TABLE = registerItem("circuit_table", new BlockItem(ModBlocks.CIRCUIT_TABLE, new Item.Settings()));
+    public static final Item IMPERIAL_PLATING = registerItem("imperial_plating", new BlockItem(ModBlocks.IMPERIAL_PLATING, new Item.Settings()));
+    public static final Item DEATH_STAR_PANEL = registerItem("death_star_panel", new BlockItem(ModBlocks.DEATH_STAR_PANEL, new Item.Settings()));
+    public static final Item DURASTEEL_PLATING = registerItem("durasteel_plating", new BlockItem(ModBlocks.DURASTEEL_PLATING, new Item.Settings()));
+    public static final Item HOLOGRAPHIC_PROJECTOR = registerItem("holographic_projector", new BlockItem(ModBlocks.HOLOGRAPHIC_PROJECTOR, new Item.Settings()));
 
     // Spawn Eggs
     public static final Item R2D2_SPAWN_EGG = registerItem("r2d2_spawn_egg", new SpawnEggItem(ModEntities.R2D2, 0xFFFFFF, 0x0000FF, new Item.Settings()));
@@ -108,6 +119,9 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.add(RAW_DURASTEEL);
             entries.add(DURASTEEL_INGOT);
+            entries.add(PLASTEEL_INGOT);
+            entries.add(PLASTEEL_PLATE);
+            entries.add(CABLE);
             entries.add(KYBER_CRYSTAL);
             entries.add(RED_KYBER_CRYSTAL);
             entries.add(GREEN_KYBER_CRYSTAL);
@@ -117,10 +131,19 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.add(HYPERFORGE);
             entries.add(LIGHTSABER_FORGE);
+            entries.add(CIRCUIT_TABLE);
+            entries.add(HOLOGRAPHIC_PROJECTOR);
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
+            entries.add(IMPERIAL_PLATING);
+            entries.add(DEATH_STAR_PANEL);
+            entries.add(DURASTEEL_PLATING);
         });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.add(DURASTEEL_ORE);
+            entries.add(PLASTEEL_ORE);
             entries.add(KYBER_CRYSTAL_ORE);
         });
 

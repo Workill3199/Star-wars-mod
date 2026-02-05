@@ -39,10 +39,14 @@
 - [ ] **Structures**:
     - *Jedi Temples*: Rare loot (Kyber crystals).
     - *Crashed Ships*: X-Wings or TIE Fighters with salvage.
-    - *Imperial Outposts*: Guarded by Stormtroopers.
+    - [x] **Imperial Outposts**: Guarded by Stormtroopers/Battle Droids (Enemy Outpost).
+    - [x] **Tatooine Market**: Desert village structure with Traders and Jawas.
 
 ## 🛠 Phase 5: Advanced Tech
-- [ ] **Lightsaber Assembly Table**: Custom UI to mix and match hilts and crystals.
+- [x] **Lightsaber Assembly Table**: Custom UI to mix and match hilts and crystals (Lightsaber Forge).
+- [x] **Hyperforge**: Special oven for processing Durasteel and Kyber Crystals.
+- [x] **Circuit Table**: Workstation for crafting Droids and electronic components.
+- [x] **Technological Blocks**: Imperial Plating, Death Star Panel, Durasteel Plating, Holographic Projector.
 - [ ] **Droids**:
     - *Astromech*: Can sit in ships or store items.
     - *Probe Droid*: Floats and scans area.

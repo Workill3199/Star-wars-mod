@@ -13,8 +13,12 @@ public class ModScreenHandlers {
                     new ScreenHandlerType<>(HyperforgeScreenHandler::new, FeatureSet.empty()));
 
     public static final ScreenHandlerType<LightsaberForgeScreenHandler> LIGHTSABER_FORGE_SCREEN_HANDLER =
-            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(StarWarsMod.MOD_ID, "lightsaber_forge"),
-                    new ScreenHandlerType<>(LightsaberForgeScreenHandler::new, FeatureSet.empty()));
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(StarWarsMod.MOD_ID, "lightsaber_forge_screen_handler"),
+                    new ScreenHandlerType<>(LightsaberForgeScreenHandler::new, FeatureFlags.VANILLA_FEATURES));
+
+    public static final ScreenHandlerType<CircuitTableScreenHandler> CIRCUIT_TABLE_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(StarWarsMod.MOD_ID, "circuit_table_screen_handler"),
+                    new ScreenHandlerType<>(CircuitTableScreenHandler::new, FeatureFlags.VANILLA_FEATURES));
 
     public static void registerScreenHandlers() {
         StarWarsMod.LOGGER.info("Registering Screen Handlers for " + StarWarsMod.MOD_ID);

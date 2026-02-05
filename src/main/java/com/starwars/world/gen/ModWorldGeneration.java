@@ -13,6 +13,12 @@ public class ModWorldGeneration {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.KYBER_CRYSTAL_ORE_PLACED_KEY);
         
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(net.minecraft.world.biome.BiomeKeys.DESERT),
+                GenerationStep.Feature.SURFACE_STRUCTURES, ModPlacedFeatures.TATOOINE_MARKET_PLACED_KEY);
+        
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(net.minecraft.world.biome.BiomeKeys.PLAINS, net.minecraft.world.biome.BiomeKeys.SAVANNA, net.minecraft.world.biome.BiomeKeys.BADLANDS),
+                GenerationStep.Feature.SURFACE_STRUCTURES, ModPlacedFeatures.ENEMY_OUTPOST_PLACED_KEY);
+        
         ModEntityGeneration.addEntityGeneration();
     }
 }

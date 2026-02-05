@@ -16,6 +16,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import com.starwars.screen.HyperforgeScreen;
 import com.starwars.screen.LightsaberForgeScreen;
+import com.starwars.screen.CircuitTableScreen;
 import com.starwars.screen.ModScreenHandlers;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 
@@ -24,6 +25,7 @@ public class StarWarsModClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		HandledScreens.register(ModScreenHandlers.HYPERFORGE_SCREEN_HANDLER, HyperforgeScreen::new);
 		HandledScreens.register(ModScreenHandlers.LIGHTSABER_FORGE_SCREEN_HANDLER, LightsaberForgeScreen::new);
+		HandledScreens.register(ModScreenHandlers.CIRCUIT_TABLE_SCREEN_HANDLER, CircuitTableScreen::new);
 
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 		BuiltinItemRendererRegistry.INSTANCE.register(ModItems.LIGHTSABER, new LightsaberRenderer()::render);

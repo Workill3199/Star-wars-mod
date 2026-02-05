@@ -19,6 +19,7 @@ import com.starwars.util.ModTrades;
 import com.starwars.villager.ModVillagers;
 import com.starwars.component.ModDataComponentTypes;
 import com.starwars.world.gen.ModWorldGeneration;
+import com.starwars.world.gen.feature.ModFeatures;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -59,6 +60,7 @@ public class StarWarsMod implements ModInitializer {
         FabricDefaultAttributeRegistry.register(ModEntities.EWOK, EwokEntity.setAttributes());
         
         ModEntities.registerSpawnRestrictions();
+        ModFeatures.registerFeatures();
 		
 		ModWorldGeneration.generateModWorldGen();
 	}

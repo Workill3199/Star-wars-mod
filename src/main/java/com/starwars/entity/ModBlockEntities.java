@@ -4,6 +4,7 @@ import com.starwars.StarWarsMod;
 import com.starwars.block.ModBlocks;
 import com.starwars.entity.block.HyperforgeBlockEntity;
 import com.starwars.entity.block.LightsaberForgeBlockEntity;
+import com.starwars.entity.block.CircuitTableBlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -20,6 +21,12 @@ public class ModBlockEntities {
             Registries.BLOCK_ENTITY_TYPE,
             Identifier.of(StarWarsMod.MOD_ID, "lightsaber_forge_be"),
             BlockEntityType.Builder.create(LightsaberForgeBlockEntity::new, ModBlocks.LIGHTSABER_FORGE).build(null)
+    );
+
+    public static final BlockEntityType<CircuitTableBlockEntity> CIRCUIT_TABLE_BE = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(StarWarsMod.MOD_ID, "circuit_table_be"),
+            BlockEntityType.Builder.create(CircuitTableBlockEntity::new, ModBlocks.CIRCUIT_TABLE).build(null)
     );
 
     public static void registerBlockEntities() {
