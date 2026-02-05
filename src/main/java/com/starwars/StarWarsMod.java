@@ -3,10 +3,20 @@ package com.starwars;
 import com.starwars.block.ModBlocks;
 import com.starwars.entity.ModEntities;
 import com.starwars.entity.custom.BattleDroidEntity;
+import com.starwars.entity.custom.C3POEntity;
+import com.starwars.entity.custom.JawaEntity;
 import com.starwars.entity.custom.R2D2Entity;
+import com.starwars.entity.custom.StormtrooperEntity;
+import com.starwars.entity.custom.EwokEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import com.starwars.item.ModItems;
 import com.starwars.sound.ModSounds;
+import com.starwars.entity.ModBlockEntities;
+import com.starwars.screen.ModScreenHandlers;
+import com.starwars.util.ModLootTableModifiers;
+import com.starwars.util.ModRegistries;
+import com.starwars.util.ModTrades;
+import com.starwars.villager.ModVillagers;
 import com.starwars.component.ModDataComponentTypes;
 import com.starwars.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
@@ -33,10 +43,22 @@ public class StarWarsMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModEntities.registerModEntities();
+		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
 		ModSounds.registerSounds();
-		
-		FabricDefaultAttributeRegistry.register(ModEntities.R2D2, R2D2Entity.setAttributes());
+		ModVillagers.registerVillagers();
+        ModTrades.registerTrades();
+        ModLootTableModifiers.modifyLootTables();
+        ModRegistries.registerModStuff();
+        
+        FabricDefaultAttributeRegistry.register(ModEntities.R2D2, R2D2Entity.setAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.BATTLE_DROID, BattleDroidEntity.setAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.STORMTROOPER, StormtrooperEntity.setAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.C3PO, C3POEntity.setAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.JAWA, JawaEntity.setAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.EWOK, EwokEntity.setAttributes());
+        
+        ModEntities.registerSpawnRestrictions();
 		
 		ModWorldGeneration.generateModWorldGen();
 	}

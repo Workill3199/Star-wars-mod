@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "star_wars_mod:durasteel_ingot"
+    },
+    "F": {
+      "item": "minecraft:blast_furnace"
+    }
+  },
+  "pattern": [
+    "###",
+    "#F#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "star_wars_mod:hyperforge"
+  }
+}

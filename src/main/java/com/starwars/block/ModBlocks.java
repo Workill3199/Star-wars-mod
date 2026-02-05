@@ -1,6 +1,8 @@
 package com.starwars.block;
 
 import com.starwars.StarWarsMod;
+import com.starwars.block.custom.HyperforgeBlock;
+import com.starwars.block.custom.LightsaberForgeBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -14,6 +16,12 @@ public class ModBlocks {
     
     public static final Block KYBER_CRYSTAL_ORE = registerBlock("kyber_crystal_ore",
             new Block(AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE).strength(4.5f).requiresTool()));
+
+    public static final Block HYPERFORGE = registerBlock("hyperforge",
+            new HyperforgeBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool()));
+
+    public static final Block LIGHTSABER_FORGE = registerBlock("lightsaber_forge",
+            new LightsaberForgeBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).requiresTool()));
 
     private static Block registerBlock(String name, Block block) {
         return Registry.register(Registries.BLOCK, Identifier.of(StarWarsMod.MOD_ID, name), block);

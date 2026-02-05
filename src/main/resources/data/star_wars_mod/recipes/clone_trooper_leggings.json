@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "I I",
+    "I I"
+  ],
+  "key": {
+    "I": {
+      "item": "star_wars_mod:durasteel_ingot"
+    }
+  },
+  "result": {
+    "id": "star_wars_mod:clone_trooper_leggings",
+    "count": 1
+  }
+}

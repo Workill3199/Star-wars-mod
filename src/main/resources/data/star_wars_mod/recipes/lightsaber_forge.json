@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "star_wars_mod:durasteel_ingot"
+    },
+    "A": {
+      "item": "minecraft:anvil"
+    }
+  },
+  "pattern": [
+    "###",
+    "#A#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "star_wars_mod:lightsaber_forge"
+  }
+}

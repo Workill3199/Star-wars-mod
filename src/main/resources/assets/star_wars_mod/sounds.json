@@ -22,5 +22,11 @@
       "star_wars_mod:lightsaber_swing"
     ],
     "subtitle": "subtitles.star_wars_mod.lightsaber_swing"
+  },
+  "blaster_fire": {
+    "sounds": [
+      "star_wars_mod:blaster_fire"
+    ],
+    "subtitle": "subtitles.star_wars_mod.blaster_fire"
   }
 }

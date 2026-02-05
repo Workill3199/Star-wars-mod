@@ -12,5 +12,7 @@ public class ModWorldGeneration {
 
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.KYBER_CRYSTAL_ORE_PLACED_KEY);
+        
+        ModEntityGeneration.addEntityGeneration();
     }
 }
