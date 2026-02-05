@@ -9,6 +9,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.minecraft.util.Formatting;
 
+import net.minecraft.item.tooltip.TooltipType;
 import java.util.List;
 
 public class HolocronItem extends Item {
@@ -36,7 +37,7 @@ public class HolocronItem extends Item {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, net.minecraft.item.TooltipType type) {
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         tooltip.add(Text.translatable("item.star_wars_mod.holocron.tooltip").formatted(Formatting.GRAY));
         super.appendTooltip(stack, context, tooltip, type);
     }
