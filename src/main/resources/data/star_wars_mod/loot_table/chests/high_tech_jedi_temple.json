@@ -1,0 +1,85 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "star_wars_mod:holocron",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 2,
+        "max": 5
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "star_wars_mod:durasteel_ingot",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "star_wars_mod:plasteel_ingot",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "star_wars_mod:cable",
+          "weight": 15,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "star_wars_mod:kyber_crystal",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "star_wars_mod:lightsaber_hilt",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "star_wars_mod:lightsaber_emitter",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "star_wars_mod:galactic_guide_book",
+          "weight": 5
+        }
+      ]
+    }
+  ]
+}

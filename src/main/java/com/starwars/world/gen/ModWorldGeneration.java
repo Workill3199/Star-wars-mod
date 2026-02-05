@@ -22,6 +22,9 @@ public class ModWorldGeneration {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(net.minecraft.world.biome.BiomeKeys.FOREST, net.minecraft.world.biome.BiomeKeys.JUNGLE, net.minecraft.world.biome.BiomeKeys.OLD_GROWTH_BIRCH_FOREST),
                 GenerationStep.Feature.SURFACE_STRUCTURES, ModPlacedFeatures.JEDI_TEMPLE_PLACED_KEY);
 
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(net.minecraft.world.biome.BiomeKeys.FOREST, net.minecraft.world.biome.BiomeKeys.JUNGLE, net.minecraft.world.biome.BiomeKeys.BAMBOO_JUNGLE),
+                GenerationStep.Feature.SURFACE_STRUCTURES, ModPlacedFeatures.HIGH_TECH_JEDI_TEMPLE_PLACED_KEY);
+
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(net.minecraft.world.biome.BiomeKeys.DESERT, net.minecraft.world.biome.BiomeKeys.BADLANDS),
                 GenerationStep.Feature.SURFACE_STRUCTURES, ModPlacedFeatures.DROID_FACTORY_PLACED_KEY);
         

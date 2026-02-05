@@ -16,6 +16,8 @@ public class ModFeatures {
             new JediTempleFeature(DefaultFeatureConfig.CODEC));
     public static final Feature<DefaultFeatureConfig> DROID_FACTORY = registerFeature("droid_factory",
             new DroidFactoryFeature(DefaultFeatureConfig.CODEC));
+    public static final Feature<DefaultFeatureConfig> HIGH_TECH_JEDI_TEMPLE = registerFeature("high_tech_jedi_temple",
+            new HighTechJediTempleFeature(DefaultFeatureConfig.CODEC));
 
     private static <C extends net.minecraft.world.gen.feature.FeatureConfig, F extends Feature<C>> F registerFeature(String name, F feature) {
         return Registry.register(Registries.FEATURE, Identifier.of(StarWarsMod.MOD_ID, name), feature);

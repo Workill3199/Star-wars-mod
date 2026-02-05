@@ -36,6 +36,7 @@ public class StarWarsModClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.C3PO, C3PORenderer::new);
         EntityRendererRegistry.register(ModEntities.JAWA, JawaRenderer::new);
         EntityRendererRegistry.register(ModEntities.EWOK, EwokRenderer::new);
+        EntityRendererRegistry.register(ModEntities.JEDI_MASTER, com.starwars.entity.client.JediMasterRenderer::new);
 		EntityRendererRegistry.register(ModEntities.LASER_PROJECTILE, LaserProjectileRenderer::new);
 	}
 }

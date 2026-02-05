@@ -5,6 +5,7 @@ import com.starwars.entity.custom.BattleDroidEntity;
 import com.starwars.entity.custom.C3POEntity;
 import com.starwars.entity.custom.EwokEntity;
 import com.starwars.entity.custom.JawaEntity;
+import com.starwars.entity.custom.JediMasterEntity;
 import com.starwars.entity.custom.R2D2Entity;
 import com.starwars.entity.custom.StormtrooperEntity;
 import com.starwars.entity.projectile.LaserProjectileEntity;
@@ -69,6 +70,14 @@ public class ModEntities {
                     .build("ewok")
     );
 
+    public static final EntityType<JediMasterEntity> JEDI_MASTER = Registry.register(
+            Registries.ENTITY_TYPE,
+            Identifier.of(StarWarsMod.MOD_ID, "jedi_master"),
+            EntityType.Builder.create(JediMasterEntity::new, SpawnGroup.CREATURE)
+                    .dimensions(0.6f, 1.8f)
+                    .build("jedi_master")
+    );
+
     public static final EntityType<LaserProjectileEntity> LASER_PROJECTILE = Registry.register(
             Registries.ENTITY_TYPE,
             Identifier.of(StarWarsMod.MOD_ID, "laser_projectile"),
@@ -86,6 +95,7 @@ public class ModEntities {
         SpawnRestriction.register(C3PO, SpawnLocationTypes.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
         SpawnRestriction.register(JAWA, SpawnLocationTypes.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
         SpawnRestriction.register(EWOK, SpawnLocationTypes.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
+        SpawnRestriction.register(JEDI_MASTER, SpawnLocationTypes.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
         
         SpawnRestriction.register(BATTLE_DROID, SpawnLocationTypes.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
         SpawnRestriction.register(STORMTROOPER, SpawnLocationTypes.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);

@@ -8,6 +8,7 @@ import com.starwars.entity.custom.JawaEntity;
 import com.starwars.entity.custom.R2D2Entity;
 import com.starwars.entity.custom.StormtrooperEntity;
 import com.starwars.entity.custom.EwokEntity;
+import com.starwars.entity.custom.JediMasterEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import com.starwars.item.ModItems;
 import com.starwars.sound.ModSounds;
@@ -58,7 +59,8 @@ public class StarWarsMod implements ModInitializer {
         FabricDefaultAttributeRegistry.register(ModEntities.C3PO, C3POEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.JAWA, JawaEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.EWOK, EwokEntity.setAttributes());
-        
+        FabricDefaultAttributeRegistry.register(ModEntities.JEDI_MASTER, JediMasterEntity.setAttributes());
+
         ModEntities.registerSpawnRestrictions();
         ModFeatures.registerFeatures();
 		

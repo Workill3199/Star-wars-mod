@@ -1,0 +1,19 @@
+{
+  "feature": "star_wars_mod:high_tech_jedi_temple",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 100
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

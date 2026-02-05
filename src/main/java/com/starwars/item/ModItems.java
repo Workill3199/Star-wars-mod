@@ -4,6 +4,7 @@ import com.starwars.StarWarsMod;
 import com.starwars.block.ModBlocks;
 import com.starwars.entity.ModEntities;
 import com.starwars.item.custom.BlasterItem;
+import com.starwars.item.custom.HolocronItem;
 import com.starwars.item.custom.LightsaberItem;
 import com.starwars.item.custom.MandalorianArmorItem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -37,6 +38,7 @@ public class ModItems {
     public static final Item LIGHTSABER_HILT = registerItem("lightsaber_hilt", new Item(new Item.Settings()));
     public static final Item LIGHTSABER_EMITTER = registerItem("lightsaber_emitter", new Item(new Item.Settings()));
     public static final Item GALACTIC_GUIDE_BOOK = registerItem("galactic_guide_book", new Item(new Item.Settings().maxCount(1)));
+    public static final Item HOLOCRON = registerItem("holocron", new HolocronItem(new Item.Settings().maxCount(1).rarity(net.minecraft.util.Rarity.RARE)));
 
     // Droid Parts & Materials
     public static final Item PLASTEEL_INGOT = registerItem("plasteel_ingot", new Item(new Item.Settings()));
@@ -70,7 +72,7 @@ public class ModItems {
     public static final Item C3PO_SPAWN_EGG = registerItem("c3po_spawn_egg", new SpawnEggItem(ModEntities.C3PO, 0xFFD700, 0x8B4513, new Item.Settings()));
     public static final Item JAWA_SPAWN_EGG = registerItem("jawa_spawn_egg", new SpawnEggItem(ModEntities.JAWA, 0x8B4513, 0x000000, new Item.Settings()));
     public static final Item EWOK_SPAWN_EGG = registerItem("ewok_spawn_egg", new SpawnEggItem(ModEntities.EWOK, 0x654321, 0xDEB887, new Item.Settings()));
-
+    public static final Item JEDI_MASTER_SPAWN_EGG = registerItem("jedi_master_spawn_egg", new SpawnEggItem(ModEntities.JEDI_MASTER, 0xFFFFFF, 0x00FF00, new Item.Settings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(StarWarsMod.MOD_ID, name), item);
@@ -114,6 +116,7 @@ public class ModItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
             entries.add(GALACTIC_GUIDE_BOOK);
+            entries.add(HOLOCRON);
         });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
@@ -154,6 +157,7 @@ public class ModItems {
             entries.add(C3PO_SPAWN_EGG);
             entries.add(JAWA_SPAWN_EGG);
             entries.add(EWOK_SPAWN_EGG);
+            entries.add(JEDI_MASTER_SPAWN_EGG);
         });
     }
 }
