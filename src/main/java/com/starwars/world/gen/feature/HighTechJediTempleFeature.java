@@ -33,135 +33,121 @@ public class HighTechJediTempleFeature extends Feature<DefaultFeatureConfig> {
         BlockPos origin = context.getOrigin();
         Random random = context.getRandom();
 
-        // Ensure we are on solid ground
+        // Ensure solid ground
         if (!world.getBlockState(origin.down()).isSolidBlock(world, origin.down())) {
             return false;
         }
 
-        BlockState floor = ModBlocks.DURASTEEL_PLATING.getDefaultState();
-        BlockState wall = ModBlocks.IMPERIAL_PLATING.getDefaultState();
-        BlockState pillar = Blocks.QUARTZ_PILLAR.getDefaultState();
-        BlockState glass = Blocks.TINTED_GLASS.getDefaultState();
+        BlockState floor = ModBlocks.IMPERIAL_PLATING.getDefaultState();
+        BlockState wall = ModBlocks.DURASTEEL_PLATING.getDefaultState();
+        BlockState glass = ModBlocks.HOLOGRAPHIC_PROJECTOR.getDefaultState();
+        BlockState pillar = ModBlocks.DEATH_STAR_PANEL.getDefaultState();
         BlockState light = Blocks.SEA_LANTERN.getDefaultState();
-        BlockState air = Blocks.AIR.getDefaultState();
 
-        int width = 13;
-        int length = 21;
-        int height = 6;
+        int width = 15;
+        int length = 25;
+        int height = 12;
 
-        // 1. Foundation & Clearing
-        for (int x = -width/2 - 1; x <= width/2 + 1; x++) {
-            for (int z = -1; z <= length + 1; z++) {
-                // Solid foundation
-                for (int y = -1; y >= -3; y--) {
-                    world.setBlockState(origin.add(x, y, z), floor, 3);
-                }
-                // Clear air for the structure
-                for (int y = 0; y <= height + 2; y++) {
-                    world.setBlockState(origin.add(x, y, z), air, 3);
+        // 1. Foundation
+        for (int x = -width/2; x <= width/2; x++) {
+            for (int z = 0; z < length; z++) {
+                world.setBlockState(origin.add(x, 0, z), floor, 3);
+                // Clear area above
+                for (int y = 1; y < height; y++) {
+                    world.setBlockState(origin.add(x, y, z), Blocks.AIR.getDefaultState(), 3);
                 }
             }
         }
 
-        // 2. Main Structure Construction
+        // 2. Walls & Ceiling
         for (int x = -width/2; x <= width/2; x++) {
             for (int z = 0; z < length; z++) {
-                // Floor
-                world.setBlockState(origin.add(x, 0, z), floor, 3);
-                
-                // Ceiling
-                world.setBlockState(origin.add(x, height, z), wall, 3);
-
-                // Outer Walls
                 if (x == -width/2 || x == width/2 || z == 0 || z == length - 1) {
                     for (int y = 1; y < height; y++) {
-                        world.setBlockState(origin.add(x, y, z), wall, 3);
-                    }
-                    // Decorative Pillars at corners and intervals
-                    if ((Math.abs(x) == width/2 && z % 5 == 0) || (z == length - 1 && Math.abs(x) % 4 == 0)) {
-                        for (int y = 1; y < height; y++) {
-                            world.setBlockState(origin.add(x, y, z), pillar, 3);
+                        // Windows
+                        if (y > 2 && y < height - 2 && (z % 4 != 0) && (x == -width/2 || x == width/2)) {
+                            world.setBlockState(origin.add(x, y, z), glass, 3);
+                        } else {
+                            world.setBlockState(origin.add(x, y, z), wall, 3);
                         }
                     }
                 }
+                // Ceiling
+                world.setBlockState(origin.add(x, height, z), floor, 3);
             }
         }
 
-        // 3. Lighting (Strip lighting in ceiling)
-        for (int z = 2; z < length - 2; z += 4) {
-             world.setBlockState(origin.add(0, height, z), light, 3);
-             world.setBlockState(origin.add(-3, height, z), light, 3);
-             world.setBlockState(origin.add(3, height, z), light, 3);
-        }
-
-        // 4. Entrance
-        BlockPos entrancePos = origin.add(0, 1, 0);
-        world.setBlockState(entrancePos, air, 3);
-        world.setBlockState(entrancePos.up(), air, 3);
-        // Entrance Pillars
-        world.setBlockState(origin.add(-1, 1, 0), pillar, 3);
-        world.setBlockState(origin.add(-1, 2, 0), pillar, 3);
-        world.setBlockState(origin.add(1, 1, 0), pillar, 3);
-        world.setBlockState(origin.add(1, 2, 0), pillar, 3);
-
-        // 5. Interior Layout
-        
-        // Central Hallway Pillars
-        for (int z = 4; z < length - 6; z += 4) {
-            for (int y = 1; y < height; y++) {
-                world.setBlockState(origin.add(-2, y, z), pillar, 3);
-                world.setBlockState(origin.add(2, y, z), pillar, 3);
+        // 3. Interior - Main Hall (First 10 blocks)
+        for (int z = 2; z < 10; z += 4) {
+            // Pillars
+            for (int y = 1; y < height - 2; y++) {
+                world.setBlockState(origin.add(-3, y, z), pillar, 3);
+                world.setBlockState(origin.add(3, y, z), pillar, 3);
             }
         }
 
-        // Archive Room (Back Left)
-        // Glass wall separator
-        for (int z = length - 8; z < length - 1; z++) {
-            world.setBlockState(origin.add(-3, 1, z), glass, 3);
-            world.setBlockState(origin.add(-3, 2, z), glass, 3);
-        }
-        
-        // Archive Loot
-        BlockPos archiveChest = origin.add(-width/2 + 2, 1, length - 3);
-        world.setBlockState(archiveChest, Blocks.CHEST.getDefaultState(), 3);
-        LootableContainerBlockEntity.setLootTable(world, random, archiveChest, RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(StarWarsMod.MOD_ID, "chests/high_tech_jedi_temple")));
-
-        // Meditation Chamber (Back Center/Right)
-        // Raised platform
-        for (int x = -1; x <= 1; x++) {
-            for (int z = length - 5; z <= length - 3; z++) {
-                world.setBlockState(origin.add(x, 1, z), Blocks.SMOOTH_QUARTZ.getDefaultState(), 3);
+        // 4. Second Floor (Balcony)
+        int floor2Y = 6;
+        for (int x = -width/2 + 1; x <= width/2 - 1; x++) {
+            for (int z = 10; z < length - 1; z++) {
+                world.setBlockState(origin.add(x, floor2Y, z), floor, 3);
             }
         }
-        
-        // 6. Security / Traps
-        // Hidden dispensers in the hallway walls
-        if (random.nextBoolean()) {
-            BlockPos trapPosLeft = origin.add(-width/2 + 1, 2, 5);
-            BlockPos trapPosRight = origin.add(width/2 - 1, 2, 5);
-            
-            world.setBlockState(trapPosLeft, Blocks.DISPENSER.getDefaultState().with(DispenserBlock.FACING, Direction.EAST), 3);
-            world.setBlockState(trapPosRight, Blocks.DISPENSER.getDefaultState().with(DispenserBlock.FACING, Direction.WEST), 3);
-            
-            // Trigger plates
-            world.setBlockState(origin.add(0, 1, 5), Blocks.STONE_PRESSURE_PLATE.getDefaultState(), 3);
-            
-            // Note: Populating dispensers with arrows requires BlockEntity access which is complex in Feature generation without creating specific loot tables for them or manually setting NBT. 
-            // For simplicity in this demo, we rely on the visual threat or assume they are "active" (user imagination) or just leave them empty as "disabled" security.
-            // Alternatively, we could spawn a potion effect cloud or something if stepped on, but let's stick to the build.
+        // Stairs to second floor
+        for (int i = 0; i < floor2Y; i++) {
+             world.setBlockState(origin.add(0, 1 + i, 9 + i), Blocks.QUARTZ_STAIRS.getDefaultState().with(net.minecraft.block.StairsBlock.FACING, Direction.SOUTH), 3);
         }
 
-        // 7. Spawn Jedi Defenders
-        int jediCount = 1 + random.nextInt(2); // 1-2 Jedi Masters
+        // 5. Tech Lab (Ground Floor Back)
+        BlockPos labCenter = origin.add(0, 1, 18);
+        world.setBlockState(labCenter, ModBlocks.CIRCUIT_TABLE.getDefaultState(), 3);
+        world.setBlockState(labCenter.east(2), ModBlocks.HYPERFORGE.getDefaultState(), 3);
+        world.setBlockState(labCenter.west(2), ModBlocks.LIGHTSABER_FORGE.getDefaultState(), 3);
+
+        // 6. Archive / Holocron Room (Second Floor Back)
+        BlockPos archivePos = origin.add(0, floor2Y + 1, length - 4);
+        world.setBlockState(archivePos, Blocks.ENCHANTING_TABLE.getDefaultState(), 3); // Placeholder for "Console"
+        
+        // Holocron Pedestals
+        world.setBlockState(archivePos.east(3), ModBlocks.DEATH_STAR_PANEL.getDefaultState(), 3);
+        world.setBlockState(archivePos.west(3), ModBlocks.DEATH_STAR_PANEL.getDefaultState(), 3);
+
+        // 7. Loot
+        BlockPos loot1 = origin.add(5, 1, length - 2);
+        world.setBlockState(loot1, Blocks.CHEST.getDefaultState(), 3);
+        if (world.getBlockEntity(loot1) instanceof LootableContainerBlockEntity lootable) {
+            lootable.setLootTable(RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(StarWarsMod.MOD_ID, "chests/high_tech_jedi_temple")), random.nextLong());
+        }
+        
+        BlockPos loot2 = origin.add(-5, floor2Y + 1, length - 2);
+        world.setBlockState(loot2, Blocks.CHEST.getDefaultState(), 3);
+        if (world.getBlockEntity(loot2) instanceof LootableContainerBlockEntity lootable) {
+            lootable.setLootTable(RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of(StarWarsMod.MOD_ID, "chests/high_tech_jedi_temple")), random.nextLong());
+        }
+
+        // 8. Traps
+        // Hidden TNT under the "Tech Lab" floor
+        world.setBlockState(labCenter.down(), Blocks.TNT.getDefaultState(), 3);
+        world.setBlockState(labCenter.down(2), Blocks.SCULK_SENSOR.getDefaultState(), 3); // High tech trap!
+
+        // 9. Defenders
+        int jediCount = 2 + random.nextInt(2);
         for (int i = 0; i < jediCount; i++) {
             JediMasterEntity jedi = ModEntities.JEDI_MASTER.create(world.toServerWorld());
             if (jedi != null) {
-                // Spawn in the back area
-                jedi.refreshPositionAndAngles(origin.getX(), origin.getY() + 2, origin.getZ() + length - 4, 0, 0);
+                jedi.refreshPositionAndAngles(origin.getX(), origin.getY() + 1, origin.getZ() + 15, 0, 0);
                 jedi.initialize(world.toServerWorld(), world.getLocalDifficulty(origin), SpawnReason.STRUCTURE, null);
-                // Make sure they don't suffocate
                 world.spawnEntity(jedi);
             }
+        }
+        
+        // Add a few friendly droids? Or maybe security droids?
+        // Let's add R2D2 as a "hacked" droid
+        var r2d2 = ModEntities.R2D2.create(world.toServerWorld());
+        if (r2d2 != null) {
+             r2d2.refreshPositionAndAngles(origin.getX() + 3, origin.getY() + floor2Y + 1, origin.getZ() + 15, 0, 0);
+             r2d2.initialize(world.toServerWorld(), world.getLocalDifficulty(origin), SpawnReason.STRUCTURE, null);
+             world.spawnEntity(r2d2);
         }
 
         return true;
