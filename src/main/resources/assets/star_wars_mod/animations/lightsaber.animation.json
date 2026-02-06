@@ -1,33 +1,39 @@
 {
-	"format_version": "1.8.0",
-	"animations": {
-		"idle": {
-			"loop": true,
-			"bones": {
-				"blade": {
-					"scale": [1, 1, 1]
-				}
-			}
-		},
-		"inactive": {
-			"loop": true,
-			"bones": {
-				"blade": {
-					"scale": [0, 0, 0]
-				}
-			}
-		},
-		"activation": {
-			"loop": false,
-			"animation_length": 0.5,
-			"bones": {
-				"blade": {
-					"scale": {
-						"0.0": [0, 0, 0],
-						"0.5": [1, 1, 1]
-					}
-				}
-			}
-		}
-	}
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.lightsaber.active": {
+      "loop": true,
+      "bones": {
+        "blade": { "scale": [1, 1, 1] }
+      }
+    },
+    "animation.lightsaber.inactive": {
+      "loop": true,
+      "bones": {
+        "blade": { "scale": [1, 0, 1] }
+      }
+    },
+    "animation.lightsaber.deploy": {
+      "animation_length": 0.3,
+      "bones": {
+        "blade": {
+          "scale": {
+            "0.0": [1, 0, 1],
+            "0.3": [1, 1, 1]
+          }
+        }
+      }
+    },
+    "animation.lightsaber.retract": {
+      "animation_length": 0.3,
+      "bones": {
+        "blade": {
+          "scale": {
+            "0.0": [1, 1, 1],
+            "0.3": [1, 0, 1]
+          }
+        }
+      }
+    }
+  }
 }
