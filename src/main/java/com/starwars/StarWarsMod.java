@@ -21,6 +21,8 @@ import com.starwars.villager.ModVillagers;
 import com.starwars.component.ModDataComponentTypes;
 import com.starwars.world.gen.ModWorldGeneration;
 import com.starwars.world.gen.feature.ModFeatures;
+import com.starwars.force.ForceEvents;
+import com.starwars.networking.ModMessages;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -41,6 +43,8 @@ public class StarWarsMod implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Star Wars world!");
+        ModMessages.registerNetworking();
+        ForceEvents.registerEvents();
         ModDataComponentTypes.registerDataComponentTypes();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();

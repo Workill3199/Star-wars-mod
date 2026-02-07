@@ -3,6 +3,10 @@
   "package": "com.starwars.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "ModEntityDataSaverMixin",
+    "ProjectileEntityMixin",
+    "PlayerJumpMixin",
+    "StarWarsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

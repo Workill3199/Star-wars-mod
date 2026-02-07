@@ -52,8 +52,8 @@ public class ModRegistries {
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(net.minecraft.loot.condition.RandomChanceLootCondition.builder(0.3f)) // 30% chance
                         .with(ItemEntry.builder(ModItems.LIGHTSABER_HILT))
-                        .apply(net.minecraft.loot.function.SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(net.minecraft.loot.function.SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
             }
 
             // Nether: Lightsaber Emitter in Nether Fortresses and Bastions
@@ -62,8 +62,8 @@ public class ModRegistries {
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(net.minecraft.loot.condition.RandomChanceLootCondition.builder(0.3f)) // 30% chance
                         .with(ItemEntry.builder(ModItems.LIGHTSABER_EMITTER))
-                        .apply(net.minecraft.loot.function.SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(net.minecraft.loot.function.SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
             }
         });
     }

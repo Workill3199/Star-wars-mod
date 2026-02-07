@@ -10,14 +10,21 @@ import com.starwars.screen.CircuitTableScreen;
 import com.starwars.screen.HyperforgeScreen;
 import com.starwars.screen.LightsaberForgeScreen;
 import com.starwars.screen.ModScreenHandlers;
+import com.starwars.client.ForceHudOverlay;
+import com.starwars.event.KeyInputHandler;
+import com.starwars.networking.ModMessagesClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 
 public class StarWarsModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        ModMessagesClient.registerS2CPackets();
+        KeyInputHandler.register();
+        HudRenderCallback.EVENT.register(new ForceHudOverlay());
 
 		BuiltinItemRendererRegistry.INSTANCE.register(ModItems.LIGHTSABER, (stack, mode, matrices, vertexConsumers, light, overlay) -> {
 			if (LightsaberItem.renderer == null) {
