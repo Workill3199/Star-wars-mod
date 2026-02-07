@@ -23,8 +23,6 @@ import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.AnimationState;
-import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
@@ -43,7 +41,7 @@ public class LightsaberItem extends SwordItem implements GeoItem {
     private void updateAttributes(ItemStack stack, boolean active) {
         AttributeModifiersComponent.Builder builder = AttributeModifiersComponent.builder();
         
-        float currentDamage = active ? this.baseDamage * 2 : 1.0f;
+        float currentDamage = active ? this.baseDamage * 1.5f : 1.0f;
 
         builder.add(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                 new EntityAttributeModifier(Identifier.of(StarWarsMod.MOD_ID, "lightsaber_damage"),
@@ -57,7 +55,6 @@ public class LightsaberItem extends SwordItem implements GeoItem {
 
         stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, builder.build());
     }
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
@@ -75,16 +72,34 @@ public class LightsaberItem extends SwordItem implements GeoItem {
                         SoundCategory.PLAYERS, 1.0f, pitch);
             }
             return TypedActionResult.success(stack, world.isClient());
-        } else {
-            if (active) {
-                user.setCurrentHand(hand);
-                return TypedActionResult.consume(stack);
+        } 
+        
+        if (active) {
+            if (!world.isClient) {
+                world.playSound(null, user.getX(), user.getY(), user.getZ(),
+                        ModSounds.LIGHTSABER_IDLE,
+                        SoundCategory.PLAYERS, 1.0f, 0.8f);
             }
-            return TypedActionResult.pass(stack);
+            
+            user.setCurrentHand(hand);
+            return TypedActionResult.consume(stack);
         }
+
+        return TypedActionResult.pass(stack);
     }
 
-    // --- COMPONENTES Y DATOS ---
+    @Override
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        boolean active = isActive(stack);
+        if (active) {
+            attacker.getWorld().playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(),
+                    ModSounds.LIGHTSABER_SWING,
+                    SoundCategory.PLAYERS, 0.6f, 0.8f);
+            target.setOnFireFor(1);
+        }
+        return super.postHit(stack, target, attacker);
+    }
+
     public String getColor(ItemStack stack) {
         return stack.getOrDefault(ModDataComponentTypes.COLOR, "blue");
     }
@@ -111,7 +126,6 @@ public class LightsaberItem extends SwordItem implements GeoItem {
         return 72000;
     }
 
-    // --- ANIMACIONES (GeckoLib) ---
     private static final RawAnimation DEPLOY = RawAnimation.begin().thenPlay("animation.lightsaber.deploy").thenLoop("animation.lightsaber.active");
     private static final RawAnimation RETRACT = RawAnimation.begin().thenPlay("animation.lightsaber.retract").thenLoop("animation.lightsaber.inactive");
 
