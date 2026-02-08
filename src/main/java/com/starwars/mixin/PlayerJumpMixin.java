@@ -1,7 +1,6 @@
 package com.starwars.mixin;
 
 import com.starwars.force.SkillData;
-import com.starwars.item.ModItems;
 import com.starwars.item.custom.LightsaberItem;
 import com.starwars.util.IEntityDataSaver;
 import net.minecraft.entity.LivingEntity;
@@ -21,6 +20,7 @@ public class PlayerJumpMixin {
         if (entity instanceof PlayerEntity player) {
             ItemStack stack = player.getMainHandStack();
             if (stack.getItem() instanceof LightsaberItem) {
+                // Now works on both Client and Server because NBT is synced
                 int level = SkillData.getSkillLevel((IEntityDataSaver) player, SkillData.JUMP_SKILL);
                 if (level > 0) {
                     float original = cir.getReturnValue();

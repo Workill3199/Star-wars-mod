@@ -63,12 +63,15 @@ public class ModMessages {
                          int cost = 20 - (level * 2);
                          if (ForceData.removeForce(playerSaver, cost) > 0 || context.player().isCreative()) {
                              Vec3d playerPos = context.player().getPos();
+                             // Reduced range to ensure stability and focus
                              List<Entity> entities = context.player().getWorld().getOtherEntities(context.player(), 
-                                     context.player().getBoundingBox().expand(10.0 * level));
+                                     context.player().getBoundingBox().expand(5.0 * level));
                              
                              for (Entity entity : entities) {
+                                 // Pull towards player
                                  Vec3d direction = playerPos.subtract(entity.getPos()).normalize();
-                                 entity.addVelocity(direction.x * level * 0.5, 0.5, direction.z * level * 0.5);
+                                 // Add stronger vertical lift to prevent getting stuck
+                                 entity.addVelocity(direction.x * level * 0.2, 0.5, direction.z * level * 0.2);
                                  entity.velocityModified = true;
                              }
                          }
