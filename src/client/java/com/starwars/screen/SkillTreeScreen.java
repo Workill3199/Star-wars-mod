@@ -30,6 +30,9 @@ public class SkillTreeScreen extends Screen {
 
         // Force Speed
         addSkillButton(centerX + 20, centerY + 20, SkillData.SPEED_SKILL, "Force Speed");
+        
+        // Force Lightning
+        addSkillButton(centerX - 40, centerY + 80, SkillData.LIGHTNING_SKILL, "Force Lightning");
     }
 
     private void addSkillButton(int x, int y, String skillId, String name) {
@@ -52,6 +55,7 @@ public class SkillTreeScreen extends Screen {
         drawSkillLevel(context, this.width / 2 + 20, this.height / 2 - 60, SkillData.PUSH_SKILL);
         drawSkillLevel(context, this.width / 2 - 100, this.height / 2 + 10, SkillData.PULL_SKILL);
         drawSkillLevel(context, this.width / 2 + 20, this.height / 2 + 10, SkillData.SPEED_SKILL);
+        drawSkillLevel(context, this.width / 2 - 40, this.height / 2 + 70, SkillData.LIGHTNING_SKILL);
 
         super.render(context, mouseX, mouseY, delta);
     }

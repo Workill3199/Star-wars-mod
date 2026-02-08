@@ -14,6 +14,7 @@ public class SkillData {
     public static final String PUSH_SKILL = "force_push";
     public static final String PULL_SKILL = "force_pull";
     public static final String SPEED_SKILL = "force_speed";
+    public static final String LIGHTNING_SKILL = "force_lightning";
 
     public static int getSkillLevel(IEntityDataSaver player, String skillId) {
         NbtCompound nbt = player.getPersistentData();

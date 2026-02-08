@@ -1,0 +1,7 @@
+{
+  "type": "star_wars_mod:jedi_temple",
+  "biomes": "#star_wars_mod:has_jedi_temple",
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "beard_thin"
+}

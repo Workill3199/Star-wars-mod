@@ -43,5 +43,10 @@
   "item.star_wars_mod.mandalorian_boots": "Mandalorian Boots",
   "item.star_wars_mod.lightsaber_hilt": "Lightsaber Hilt",
   "item.star_wars_mod.lightsaber_emitter": "Lightsaber Emitter",
-  "item.star_wars_mod.galactic_guide_book": "Galactic Guide Book"
+  "item.star_wars_mod.galactic_guide_book": "Galactic Guide Book",
+  "item.star_wars_mod.holocron": "Holocron",
+  "item.star_wars_mod.ewok_spawn_egg": "Ewok Spawn Egg",
+  "item.star_wars_mod.jedi_master_spawn_egg": "Jedi Master Spawn Egg",
+  "entity.star_wars_mod.jedi_master": "Jedi Master",
+  "key.starwars.force_lightning": "Force Lightning"
 }

@@ -15,10 +15,12 @@ public class KeyInputHandler {
     public static final String KEY_OPEN_SKILLS = "key.starwars.open_skills";
     public static final String KEY_FORCE_PUSH = "key.starwars.force_push";
     public static final String KEY_FORCE_PULL = "key.starwars.force_pull";
+    public static final String KEY_FORCE_LIGHTNING = "key.starwars.force_lightning";
 
     public static KeyBinding openSkillsKey;
     public static KeyBinding forcePushKey;
     public static KeyBinding forcePullKey;
+    public static KeyBinding forceLightningKey;
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -30,6 +32,9 @@ public class KeyInputHandler {
             }
             while (forcePullKey.wasPressed()) {
                 ClientPlayNetworking.send(new AbilityUsePayload(SkillData.PULL_SKILL));
+            }
+            while (forceLightningKey.wasPressed()) {
+                ClientPlayNetworking.send(new AbilityUsePayload(SkillData.LIGHTNING_SKILL));
             }
         });
     }
@@ -53,6 +58,13 @@ public class KeyInputHandler {
                 KEY_FORCE_PULL,
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_C,
+                KEY_CATEGORY_STARWARS
+        ));
+
+        forceLightningKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                KEY_FORCE_LIGHTNING,
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_G,
                 KEY_CATEGORY_STARWARS
         ));
 

@@ -15,6 +15,14 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import java.util.List;
 
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageTypes;
+
 public class ModMessages {
     public static void registerNetworking() {
         PayloadTypeRegistry.playS2C().register(ForceSyncPayload.ID, ForceSyncPayload.CODEC);
@@ -73,6 +81,33 @@ public class ModMessages {
                                  // Add stronger vertical lift to prevent getting stuck
                                  entity.addVelocity(direction.x * level * 0.2, 0.5, direction.z * level * 0.2);
                                  entity.velocityModified = true;
+                             }
+                         }
+                    } else if (ability.equals(SkillData.LIGHTNING_SKILL)) {
+                         // Force Lightning Logic
+                         int cost = 25 - (level * 2);
+                         if (ForceData.removeForce(playerSaver, cost) > 0 || context.player().isCreative()) {
+                             Vec3d start = context.player().getEyePos();
+                             Vec3d look = context.player().getRotationVector();
+                             double range = 10.0 + (level * 2.0); // 12 to 20 blocks
+                             Vec3d end = start.add(look.multiply(range));
+                             
+                             // Raycast logic (simplified)
+                             Box box = context.player().getBoundingBox().expand(range);
+                             List<Entity> entities = context.player().getWorld().getOtherEntities(context.player(), box);
+                             
+                             for (Entity entity : entities) {
+                                 if (entity.getBoundingBox().intersects(start, end)) {
+                                     // Damage
+                                     float damage = 4.0f + (level * 1.5f); // 5.5 to 11.5 damage
+                                     entity.damage(context.player().getDamageSources().lightningBolt(), damage);
+                                     entity.setOnFireFor(level * 2); // Burn duration
+                                     
+                                     // Visuals (Particles)
+                                     if (context.player().getWorld() instanceof ServerWorld serverWorld) {
+                                         serverWorld.spawnParticles(ParticleTypes.ELECTRIC_SPARK, entity.getX(), entity.getY() + entity.getHeight()/2, entity.getZ(), 10, 0.5, 0.5, 0.5, 0.1);
+                                     }
+                                 }
                              }
                          }
                     }

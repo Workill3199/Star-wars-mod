@@ -23,6 +23,8 @@ import com.starwars.world.gen.ModWorldGeneration;
 import com.starwars.world.gen.feature.ModFeatures;
 import com.starwars.force.ForceEvents;
 import com.starwars.networking.ModMessages;
+import com.starwars.worldgen.structure.ModStructures;
+import com.starwars.worldgen.structure.JediTempleGenerator;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -44,6 +46,8 @@ public class StarWarsMod implements ModInitializer {
 
 		LOGGER.info("Hello Star Wars world!");
         ModMessages.registerNetworking();
+        ModStructures.registerStructureFeatures();
+        JediTempleGenerator.init();
         ForceEvents.registerEvents();
         ModDataComponentTypes.registerDataComponentTypes();
 		ModItems.registerModItems();
