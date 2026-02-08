@@ -18,6 +18,12 @@ repositories {
 	// for more information about repositories.
 
 	maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 loom {
@@ -43,6 +49,9 @@ dependencies {
 
 	// GeckoLib
     modImplementation "software.bernie.geckolib:geckolib-fabric-${project.minecraft_version}:${project.geckolib_version}"
+    
+    // TerraBlender
+    modImplementation "curse.maven:terrablender-fabric-565956:5864141"
 }
 
 processResources {

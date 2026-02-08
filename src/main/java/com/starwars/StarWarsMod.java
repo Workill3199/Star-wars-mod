@@ -25,6 +25,7 @@ import com.starwars.force.ForceEvents;
 import com.starwars.networking.ModMessages;
 import com.starwars.worldgen.structure.ModStructures;
 import com.starwars.worldgen.structure.JediTempleGenerator;
+import com.starwars.worldgen.biome.ModBiomes;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -48,6 +49,7 @@ public class StarWarsMod implements ModInitializer {
         ModMessages.registerNetworking();
         ModStructures.registerStructureFeatures();
         JediTempleGenerator.init();
+        ModBiomes.registerModBiomes();
         ForceEvents.registerEvents();
         ModDataComponentTypes.registerDataComponentTypes();
 		ModItems.registerModItems();
